@@ -1,0 +1,4 @@
+Tekir,Kedi,60,60
+Karabas,Kopek,60,60
+Kar,Kedi,60,60
+Kamuran,Kopek,60,60
