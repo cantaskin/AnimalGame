@@ -42,7 +42,7 @@ void	*my_calloc(size_t count, size_t size)
 	dst = malloc(tot_size);
 	if (!(dst))
 		return (0);
-	ft_memset(dst, 0, tot_size);
+	my_memset(dst, 0, tot_size);
 	return (dst);
 }
 
@@ -67,7 +67,7 @@ char	*my_itoa(int n)
 	int		digit;
 
 	digit = find_len(n);
-	str = (char *) ft_calloc(digit + 1, sizeof(char));
+	str = (char *) my_calloc(digit + 1, sizeof(char));
 	if (!str)
 		return (NULL);
 	if (n == 0)
@@ -76,7 +76,7 @@ char	*my_itoa(int n)
 	{
 		if (n == -2147483648)
 		{
-			ft_strlcpy(str, "-2147483648", digit + 1);
+			my_strlcpy(str, "-2147483648", digit + 1);
 			return (str);
 		}
 		str[0] = '-';
