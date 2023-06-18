@@ -1,4 +1,4 @@
-#include "animal.h"
+#include "Animal.h"
 
 struct Animal *animal_init()
 {
@@ -9,8 +9,8 @@ struct Animal *animal_init()
     new->energy = 60;
     new->emotion = NULL;
     new->emotion_txt = NULL;
-    new->emotion = ft_strdup("mutlu");
-    new->emotion_txt = ft_strdup(":)");
+    new->emotion = my_strdup("mutlu");
+    new->emotion_txt = my_strdup(":)");
     return (new);
 
 }
@@ -22,18 +22,18 @@ int add_animal()
     char *buffer = NULL;
     buffer = malloc(1000);
     int fd , tmp_fd ,flag = 0;  // Otomatik boyutlandırma için başlangıç boyutu
-    printf("Hayvan ismi giriniz\n");
+    my_printf("Hayvan ismi giriniz\n");
      while (readline(0, &buffer, 260)) 
     {
         flag = 0;
         fd = open("evcil_veri.txt", O_RDWR);
-            while(tmp = get_next_line(fd))
+            while(tmp = my_next_line(fd))
             {
-                if(_strcmp(buffer,ft_split(tmp,',')[0]) && !new->name)
+                if(my_strcmp(buffer,my_split(tmp,',')[0]) && !new->name)
                 {
                     flag = 1;
                     close(fd);
-                    printf("Girdiginiz isim daha once başka bir hayvan için kullanilmistir. Baska bir isim giriniz.\n");
+                    my_printf("Girdiginiz isim daha once başka bir hayvan için kullanilmistir. Baska bir isim giriniz.\n");
                     return 0;
                 }
             }
@@ -41,18 +41,18 @@ int add_animal()
         {
             if(!new->name)
             {
-                new->name = ft_strdup(buffer);
-                printf("Lutfen %s isimli hayvanin turunu giriniz.\n", new->name);
+                new->name = my_strdup(buffer);
+                my_printf("Lutfen %s isimli hayvanin turunu giriniz.\n", new->name);
             }
             else if(!new->species)
             {
-                new->species = ft_strdup(buffer);
-                printf("%s isimde ve %s turunde hayvan olusturulmustur.\n", new->name, new->species);
+                new->species = my_strdup(buffer);
+                my_printf("%s isimde ve %s turunde hayvan olusturulmustur.\n", new->name, new->species);
             }
             else 
             {
                 tmp_fd = open("duygu.txt", O_RDWR);
-                while(get_next_line(tmp_fd));
+                while(my_next_line(tmp_fd));
                 print_to_file(fd,new);
                 print_to_file2(tmp_fd,new);
                 close(tmp_fd);
@@ -80,26 +80,26 @@ int uptade_animal()
     buffer = malloc(1000);
     int fd , flag = 0; 
     print_animal_names();
-    printf("Islem yapmak istediginiz hayvanin ismini giriniz.\n");
+    my_printf("Islem yapmak istediginiz hayvanin ismini giriniz.\n");
     while (readline(0, &buffer, 260)) 
     {
         flag = 0;
         fd = open("evcil_veri.txt", O_RDWR);
-            while(tmp = get_next_line(fd))
+            while(tmp = my_next_line(fd))
             {
-                if(_strcmp(buffer,ft_split(tmp,',')[0]))
+                if(my_strcmp(buffer,my_split(tmp,',')[0]))
                 {
                     flag = 1;
-                    new->name = ft_split(tmp,',')[0];
-                    new->species = ft_split(tmp,',')[1];
-                    new->happiness = ft_atoi(ft_split(tmp,',')[2]);
-                    new->energy = ft_atoi(ft_split(tmp,',')[3]);
+                    new->name = my_split(tmp,',')[0];
+                    new->species = my_split(tmp,',')[1];
+                    new->happiness = my_atoi(my_split(tmp,',')[2]);
+                    new->energy = my_atoi(my_split(tmp,',')[3]);
                     close(fd);
                 }
             }
             if(!flag)
             {
-                printf("Girdiginiz isimde bir hayvan bulunmamaktadir.\n");
+                my_printf("Girdiginiz isimde bir hayvan bulunmamaktadir.\n");
                 close(fd);
                 free(tmp);
                 free(buffer);

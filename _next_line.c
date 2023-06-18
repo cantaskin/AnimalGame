@@ -1,6 +1,6 @@
 #include "Animal.h"
 
-char *get_next_line(int fd)
+char *my_next_line(int fd)
 {
     int     i = 0;
     int     rd = 0;

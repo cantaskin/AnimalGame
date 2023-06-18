@@ -1,5 +1,4 @@
 #include "Animal.h"
-#include <stdio.h>
 
 int main()
 {
@@ -12,6 +11,6 @@ int main()
         else if(atoi(buffer) == 2)
            while(!uptade_animal());
         else 
-            printf("Yanlis komut girdiniz. Lutfen tekrar deneyiniz\n");
+            my_printf("Yanlis komut girdiniz. Lutfen tekrar deneyiniz\n");
     }
 }   

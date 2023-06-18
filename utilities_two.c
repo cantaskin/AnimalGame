@@ -16,8 +16,8 @@ char *my_strlcat(char *dst, char *src, size_t dstsize)
 	size_t	dst_len;
 
 	j = 0;
-	dst_len = _strlen(dst);
-	src_len = _strlen(src);
+	dst_len = my_strlen(dst);
+	src_len = my_strlen(src);
 	if (dstsize == 0)
 		return (src);
 	if (dstsize < dst_len)
@@ -50,7 +50,7 @@ int energy_check(struct Animal *cpy)
 {
     if(!(cpy->energy > 5))
     {
-        printf("Enerjiniz bitti lütfen uyuyunuz\n");
+        my_printf("Enerjiniz bitti lütfen uyuyunuz\n");
         return 0;
     }
     return 1;
@@ -67,11 +67,11 @@ char		**my_split(char const *s, char c)
 	i = 0;
 	j = 0;
 	index = -1;
-	while (i <= _strlen(s))
+	while (i <= my_strlen(s))
 	{
 		if (s[i] != c && index < 0)
 			index = i;
-		else if ((s[i] == c || i == _strlen(s)) && index >= 0)
+		else if ((s[i] == c || i == my_strlen(s)) && index >= 0)
 		{
 			split[j++] = word_dup(s, index, i);
 			index = -1;
@@ -88,7 +88,7 @@ char	*my_strdup(const char *str)
 	char	*twin;
 	size_t	i;
 
-	twin = malloc(sizeof(char) * (_strlen(str) + 1));
+	twin = malloc(sizeof(char) * (my_strlen(str) + 1));
 	if (!twin)
 		return (NULL);
 	i = 0;
@@ -132,5 +132,5 @@ int	my_strcmp(const char *s1, const char *s2)
 	i = 0;
 	while ((s1[i] == s2[i]) && (s1[i] != '\0') && (s2[i] != '\0' ) )
 		i++;
-	return (_strlen(s2) == i);
+	return (my_strlen(s2) == i);
 }

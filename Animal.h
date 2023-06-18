@@ -3,7 +3,8 @@
 #define BUFFER_SIZE 1
 
 //Mac veya Linuxta kullanacaksanız <unistd.h> kullanın, windowsta <io.h> çalışır.
-# include <io.h> 
+# include <unistd.h>
+# include <stdio.h>
 # include <stdlib.h>
 #include <fcntl.h>
 #include <stdarg.h>
@@ -18,8 +19,8 @@ struct Animal
     int happiness;
 };
 
-int	ft_printf(const char *format, ...);
-char	*get_next_line(int fd);
+int	my_printf(const char *format, ...);
+char	*my_next_line(int fd);
 
 //utilities.c
 
@@ -30,12 +31,12 @@ int	find_len(int nbr);
 char	*my_itoa(int n);
 void	my_putstr_fd(char *s, int fd);
 int	my_atoi(const char *str);
-int	count_words(const char *str, char c)
+int	count_words(const char *str, char c);
 
 //utilities_two.c
 int my_strlen(const char *ptr);
 char *my_strlcat(char *dst, char *src, size_t dstsize);
-char	*word_dup(const char *str, int start, int finish)
+char	*word_dup(const char *str, int start, int finish);
 int energy_check(struct Animal *cpy);
 char		**my_split(char const *s, char c);
 char	*my_strdup(const char *str);
